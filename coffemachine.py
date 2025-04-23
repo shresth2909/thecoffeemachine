@@ -54,9 +54,16 @@ while machine_is_on:
         print('Okkay, cool!! have a good day!')
         break
     user_choice = input('What would you like to have (espresso/latte/cappuccino)? ')
-    resources_sufficient = check_resource_sufficiency(user_choice) # Store the boolean result in a new variable
-    if resources_sufficient:
-        coffee_processing(user_choice)
+    if user_choice == 'espresso' or user_choice == 'latte' or user_choice == 'cappuccino':
+        print(f'It will take water upto:{MENU.OUR_MENU[user_choice]["ingredients"].get("water", 0)}')
+        print(f'It will take milk upto:{MENU.OUR_MENU[user_choice]["ingredients"].get("milk", 0)}')
+        print(f'It will take coffe upto:{MENU.OUR_MENU[user_choice]["ingredients"].get("coffee", 0)}')
+        print(f'It will costs: {MENU.OUR_MENU[user_choice]["cost"]}')
+        resources_sufficient = check_resource_sufficiency(user_choice) # Store the boolean result in a new variable
+        if resources_sufficient:
+            coffee_processing(user_choice)
+        else:
+            print('Sorry, you dont have enough resources, please check your request')
+            print_report()
     else:
-        print('Sorry, you dont have enough resources, please check your request')
-        print_report()
+        print('Sorry but we dont have this coffe in our menu, please select the correct choice')
