@@ -7,6 +7,7 @@ def resource_utilisation(user_choice):
     RESOURCE.resources["coffee"] -= MENU.OUR_MENU[user_choice]["ingredients"].get("coffee", 0)
 
 def ask_about_the_coins():
+    print('Please insert the number of coins:')
     quarters = input("How many quarters?: ")
     dimes = input("How many dimes?: ")
     nickles = input("How many nickles?: ")
